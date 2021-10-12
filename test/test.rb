@@ -23,17 +23,32 @@ class IntegrationTest < Test::Unit::TestCase
         config.password = BW_PASSWORD
       end
     
+      api_instance_msg = OpenapiClient::MessagesApi.new()
+
       def test_create_message
-        api_instance_msg = OpenapiClient::MessagesApi.new()
         body = OpenapiClient::MessageRequest.new(
             application_id: BW_MESSAGING_APPLICATION_ID,
             to: [USER_NUMBER],
             from: BW_NUMBER,
             text: "ruby sdk test"
         )
-        account_id = BW_ACCOUNT_ID
-        new_msg_response = OpenapiClient::BandwidthMessage.new()
-        response = api_instance_msg.create_message(account_id, body)
+        response = api_instance_msg.create_message(BW_ACCOUNT_ID, body)
         assert(response::id.length > 0, "id value not set") # validate a message was created and its id exists
       end
+
+      def test_create_message_invalid_phone_number
+        body = OpenapiClient::MessageRequest.new(
+            application_id: BW_MESSAGING_APPLICATION_ID,
+            to: ["+1invalid"],
+            from: BW_NUMBER,
+            text: "ruby sdk test"
+        )
+        begin
+            api_instance_msg.create_message(BW_ACCOUNT_ID, body)
+            #workaround to make sure that if the error below is not raised, the build will fail
+            assert(false, "Expected exception not raised")
+        rescue MessagingException => e
+            assert(e.description.length > 0, "description value not set")
+        end
+    end
 end

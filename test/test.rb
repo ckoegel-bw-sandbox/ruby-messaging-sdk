@@ -47,7 +47,7 @@ class IntegrationTest < Test::Unit::TestCase
             $api_instance_msg.create_message(BW_ACCOUNT_ID, body)
             #workaround to make sure that if the error below is not raised, the build will fail
             assert(false, "Expected exception not raised")
-        rescue MessagingException => e
+        rescue OpenapiClient::ApiError => e
             assert(e.description.length > 0, "description value not set")
         end
     end

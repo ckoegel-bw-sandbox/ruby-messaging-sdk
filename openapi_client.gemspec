@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
 
   #s.files         = `find *`.split("\n").uniq.sort.select { |f| !f.empty? }
   s.files         = Dir['./**/*']
-  s.test_files    = `find spec/*`.split("\n")
+  s.test_files    = Dir['spec/*']
   s.executables   = []
   s.require_paths = ["lib"]
 end

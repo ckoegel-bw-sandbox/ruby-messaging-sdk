@@ -21,7 +21,6 @@ class IntegrationTest < Test::Unit::TestCase
         # Configure HTTP basic authorization: httpBasic
         config.username = BW_USERNAME
         config.password = BW_PASSWORD
-        config.verify_ssl = false
       end
     
       def test_create_message

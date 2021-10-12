@@ -1,5 +1,6 @@
 require 'test/unit'
-require_relative '../lib/openapi_client.rb'
+require 'openapi_client'
+# require_relative '../lib/openapi_client.rb'
 include OpenapiClient
 include OpenapiClient::MessagesApi
 

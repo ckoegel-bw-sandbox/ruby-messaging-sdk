@@ -12,25 +12,25 @@ OpenAPI Generator version: 5.2.1
 
 # Common files
 require_relative 'openapi_client/api_client'
-require 'openapi_client/api_error'
-require 'openapi_client/version'
-require 'openapi_client/configuration'
+require_relative 'openapi_client/api_error'
+require_relative 'openapi_client/version'
+require_relative 'openapi_client/configuration'
 
 # Models
-require 'openapi_client/models/bandwidth_callback_message'
-require 'openapi_client/models/bandwidth_message'
-require 'openapi_client/models/bandwidth_message_item'
-require 'openapi_client/models/bandwidth_messages_list'
-require 'openapi_client/models/deferred_result'
-require 'openapi_client/models/media'
-require 'openapi_client/models/message_request'
-require 'openapi_client/models/messaging_exception'
-require 'openapi_client/models/page_info'
-require 'openapi_client/models/tag'
+require_relative 'openapi_client/models/bandwidth_callback_message'
+require_relative 'openapi_client/models/bandwidth_message'
+require_relative 'openapi_client/models/bandwidth_message_item'
+require_relative 'openapi_client/models/bandwidth_messages_list'
+require_relative 'openapi_client/models/deferred_result'
+require_relative 'openapi_client/models/media'
+require_relative 'openapi_client/models/message_request'
+require_relative 'openapi_client/models/messaging_exception'
+require_relative 'openapi_client/models/page_info'
+require_relative 'openapi_client/models/tag'
 
 # APIs
-require 'openapi_client/api/media_api'
-require 'openapi_client/api/messages_api'
+require_relative 'openapi_client/api/media_api'
+require_relative 'openapi_client/api/messages_api'
 
 module OpenapiClient
   class << self

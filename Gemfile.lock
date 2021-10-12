@@ -13,6 +13,7 @@ GEM
     diff-lcs (1.4.4)
     ethon (0.14.0)
       ffi (>= 1.15.0)
+    ffi (1.15.4-x64-mingw32)
     ffi (1.15.4-x86-mingw32)
     jaro_winkler (1.5.4)
     method_source (1.0.0)
@@ -55,6 +56,7 @@ GEM
     unicode-display_width (1.5.0)
 
 PLATFORMS
+  x64-mingw32
   x86-mingw32
 
 DEPENDENCIES

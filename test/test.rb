@@ -1,8 +1,6 @@
 require 'test/unit'
-require 'openapi_client'
-# require_relative '../lib/openapi_client.rb'
+require_relative '../lib/openapi_client.rb'
 include OpenapiClient
-include OpenapiClient::MessagesApi
 
 begin
     BW_USERNAME = ENV.fetch("BW_USERNAME")
@@ -23,6 +21,7 @@ class IntegrationTest < Test::Unit::TestCase
         # Configure HTTP basic authorization: httpBasic
         config.username = BW_USERNAME
         config.password = BW_PASSWORD
+        config.verify_ssl = false
       end
     
       def test_create_message
@@ -36,6 +35,6 @@ class IntegrationTest < Test::Unit::TestCase
         account_id = BW_ACCOUNT_ID
         new_msg_response = OpenapiClient::BandwidthMessage.new()
         response = api_instance_msg.create_message(account_id, body)
-        assert(response::id > 0, "id value not set") # validate a message was created and its id exists
+        assert(response::id.length > 0, "id value not set") # validate a message was created and its id exists
       end
 end

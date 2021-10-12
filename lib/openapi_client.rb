@@ -11,7 +11,7 @@ OpenAPI Generator version: 5.2.1
 =end
 
 # Common files
-require 'openapi_client/api_client'
+require_relative 'openapi_client/api_client'
 require 'openapi_client/api_error'
 require 'openapi_client/version'
 require 'openapi_client/configuration'

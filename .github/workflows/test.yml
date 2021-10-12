@@ -26,6 +26,9 @@ jobs:
     - name: Install Packages
       run: bundle install
 
+    - name: Install Gem
+      run: gem install ./openapi_client-1.0.0.gem
+
     - name: Test
       env:
         BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}

@@ -45,6 +45,7 @@ class IntegrationTest < Test::Unit::TestCase
             :source_tn => BW_NUMBER
         }
         response = $api_instance_msg.get_messages(BW_ACCOUNT_ID, get_opts)
+        puts response.messages
         assert_equal(response.messages[0]::source_tn, BW_NUMBER, "failed to get message from BW_NUMBER")
     end
 

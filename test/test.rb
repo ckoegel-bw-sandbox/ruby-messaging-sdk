@@ -46,8 +46,8 @@ class IntegrationTest < Test::Unit::TestCase
         }
         response = $api_instance_msg.get_messages(BW_ACCOUNT_ID, get_opts)
         puts response.messages[0].inspect
-        assert_equal(response.messages[0].inspect, "OpenapiClient::BandwidthMessageItemtest", "fail")
-        #assert_equal(response::messages[0]::source_tn, BW_NUMBER, "failed to get message from BW_NUMBER")
+        assert_equal("OpenapiClient::BandwidthMessageItemtest", response.messages[0].inspect, "fail")
+        #assert_equal(response.messages[0].source_tn, BW_NUMBER, "failed to get message from BW_NUMBER")
     end
 
     def test_create_message_invalid_phone_number
@@ -82,7 +82,7 @@ class IntegrationTest < Test::Unit::TestCase
 
         #media list
         list_media = $api_instance_media.list_media(BW_ACCOUNT_ID)
-        assert_equal(list_media[0]::media_name, media_name, "could not find media on account")
+        assert_equal(list_media[0].media_name, media_name, "could not find media on account")
 
         #media download
         downloaded_media_file = $api_instance_media.get_media(BW_ACCOUNT_ID, media_name, debug_return_type: 'String')

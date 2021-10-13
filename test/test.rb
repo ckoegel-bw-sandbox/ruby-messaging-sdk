@@ -42,13 +42,14 @@ class IntegrationTest < Test::Unit::TestCase
 
     def test_get_message
         get_opts = {
-            :source_tn => "%2b19195892106"
+            :source_tn => "+19195892106"
         }
-        response = $api_instance_msg.get_messages(BW_ACCOUNT_ID, get_opts)
+        response = $api_instance_msg.get_messages_with_http_info(BW_ACCOUNT_ID, get_opts)
+        #puts response[0].messages[0]
         #puts response.messages[0].inspect
         #assert_equal("OpenapiClient::BandwidthMessageItemtest", response.messages[0].inspect, "fail")
         #puts response.messages[0].source_tn
-        assert_equal(response.messages[0].source_tn, "+19195892106", "failed to get message from BW_NUMBER")
+        assert_equal(response[0].messages[0].source_tn, "+19195892106", "failed to get message from BW_NUMBER")
     end
 
     def test_create_message_invalid_phone_number

@@ -45,7 +45,9 @@ class IntegrationTest < Test::Unit::TestCase
             :source_tn => BW_NUMBER
         }
         response = $api_instance_msg.get_messages(BW_ACCOUNT_ID, get_opts)
-        assert_equal(response::messages[0]::source_tn, BW_NUMBER, "failed to get message from BW_NUMBER")
+        puts response.messages[0].inspect
+        assert_equal(response.messages[0].inspect, "OpenapiClient::BandwidthMessageItem", "fail")
+        #assert_equal(response::messages[0]::source_tn, BW_NUMBER, "failed to get message from BW_NUMBER")
     end
 
     def test_create_message_invalid_phone_number

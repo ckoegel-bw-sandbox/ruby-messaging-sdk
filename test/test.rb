@@ -45,7 +45,7 @@ class IntegrationTest < Test::Unit::TestCase
             :source_tn => BW_NUMBER
         }
         response = $api_instance_msg.get_messages(BW_ACCOUNT_ID, get_opts)
-        assert_equal(response.messages[0].source_tn, BW_NUMBER, "failed to get message from BW_NUMBER")
+        assert_equal(response.messages[0]::source_tn, BW_NUMBER, "failed to get message from BW_NUMBER")
     end
 
     def test_create_message_invalid_phone_number
@@ -67,12 +67,12 @@ class IntegrationTest < Test::Unit::TestCase
     end
 
     def test_all_media
-        media_file_name = 'ruby_media_test'
-        media_file = '123456'
+        media_name = 'ruby_media_test'
+        media_data = '123456'
 
         #media upload
         begin
-            up_response = $api_instance_media.upload_media(BW_ACCOUNT_ID, media_file_name, media_file)
+            up_response = $api_instance_media.upload_media(BW_ACCOUNT_ID, media_name, media_data)
         rescue OpenapiClient::ApiError => e
             puts "Status Code: "+ e.code
             assert(false, "upload media failed")
@@ -80,15 +80,15 @@ class IntegrationTest < Test::Unit::TestCase
 
         #media list
         list_media = $api_instance_media.list_media(BW_ACCOUNT_ID)
-        assert_equal(list_media[0].media_name, media_file_name, "could not find media on account")
+        assert_equal(list_media[0]::media_name, media_name, "could not find media on account")
 
         #media download
-        downloaded_media_file = $api_instance_media.get_media(BW_ACCOUNT_ID, media_file_name, debug_return_type: 'String')
-        assert_equal(downloaded_media_file, media_file, "downloaded media file not equal to upload")
+        downloaded_media_file = $api_instance_media.get_media(BW_ACCOUNT_ID, media_name, debug_return_type: 'String')
+        assert_equal(downloaded_media_file, media_data, "downloaded media file not equal to upload")
 
         #media delete
         begin
-            del_response = $api_instance_media.delete_media(BW_ACCOUNT_ID, media_file_name)
+            del_response = $api_instance_media.delete_media(BW_ACCOUNT_ID, media_name)
         rescue OpenapiClient::ApiError => e
             puts "Status Code: "+ e.code
             assert(false, "delete media failed")
